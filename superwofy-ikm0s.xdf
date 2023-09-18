@@ -1,4 +1,4 @@
-<!-- Written 09/15/2023 01:54:41 -->
+<!-- Written 10/11/2023 20:22:28 -->
 <XDFFORMAT version="1.70">
   <XDFHEADER>
     <flags>0x1</flags>
@@ -10,6 +10,7 @@
     <REGION type="0xFFFFFFFF" startaddress="0x0" size="0x200000" regioncolor="0x0" regionflags="0x0" name="Binary File" desc="This region describes the bin file edited by this XDF" />
     <CATEGORY index="0x3D" name="Trailing Throttle and Fuel Cut (Burble)" />
     <CATEGORY index="0x3E" name="Trailing Throttle and Fuel Cut Breakpoints" />
+    <CATEGORY index="0x49" name="Load Management" />
     <CATEGORY index="0x4A" name="Cruise Control" />
     <CATEGORY index="0x4B" name="Idle Breakpoints" />
     <CATEGORY index="0x4C" name="Idle" />
@@ -2416,7 +2417,7 @@
   </XDFTABLE>
   <XDFTABLE uniqueid="0x2471" flags="0x0">
     <title>Minimum Idle Speed (MT Oil Temp)</title>
-    <description>ip_n_sp_is_toil_mt</description>
+    <description>ip_n_sp_is_toil_mt&#013;&#010;&#013;&#010;This applies while coasting in neutral (clutch released).</description>
     <CATEGORYMEM index="0" category="77" />
     <XDFAXIS id="x" uniqueid="0x0">
       <EMBEDDEDDATA mmedtypeflags="0x02" mmedaddress="0x4BA67" mmedelementsizebits="8" mmedcolcount="4" mmedmajorstridebits="0" mmedminorstridebits="0" />
@@ -2494,6 +2495,153 @@
       <max>255.000000</max>
       <outputtype>1</outputtype>
       <MATH equation="X-40">
+        <VAR id="X" />
+      </MATH>
+    </XDFAXIS>
+  </XDFTABLE>
+  <XDFTABLE uniqueid="0x8A3" flags="0x0">
+    <title>Configuration of torque interventions that prevent Dashpot enable</title>
+    <description>CW_CONF_DASHPOT&#013;&#010;&#013;&#010;LSB first:&#013;&#010;Bit0: Dashpot enabled&#013;&#010;Bit1: clutch switch switches off dashpot&#013;&#010;Bit2: DKG switches off via B_gangwechsel_gs dashpot&#013;&#010;Bit3: AT switches off dashpot via B_gangwechsel_gs </description>
+    <CATEGORYMEM index="0" category="74" />
+    <XDFAXIS id="x" uniqueid="0x0">
+      <EMBEDDEDDATA mmedelementsizebits="8" mmedmajorstridebits="-32" mmedminorstridebits="0" />
+      <indexcount>1</indexcount>
+      <datatype>0</datatype>
+      <unittype>0</unittype>
+      <DALINK index="0" />
+      <LABEL index="0" value="0.00" />
+      <MATH equation="X">
+        <VAR id="X" />
+      </MATH>
+    </XDFAXIS>
+    <XDFAXIS id="y" uniqueid="0x0">
+      <EMBEDDEDDATA mmedelementsizebits="8" mmedmajorstridebits="-32" mmedminorstridebits="0" />
+      <indexcount>1</indexcount>
+      <datatype>0</datatype>
+      <unittype>0</unittype>
+      <DALINK index="0" />
+      <LABEL index="0" value="0.00" />
+      <MATH equation="X">
+        <VAR id="X" />
+      </MATH>
+    </XDFAXIS>
+    <XDFAXIS id="z">
+      <EMBEDDEDDATA mmedaddress="0x7582D" mmedelementsizebits="8" mmedrowcount="1" mmedmajorstridebits="0" mmedminorstridebits="0" />
+      <decimalpl>2</decimalpl>
+      <min>0.000000</min>
+      <max>255.000000</max>
+      <outputtype>3</outputtype>
+      <MATH equation="X">
+        <VAR id="X" />
+      </MATH>
+    </XDFAXIS>
+  </XDFTABLE>
+  <XDFTABLE uniqueid="0x672B" flags="0x0">
+    <title>Configuration of torque interventions that prevent Load Shock Damping enable</title>
+    <description>CW_CONF_LSD&#013;&#010;&#013;&#010;LSB first:&#013;&#010;Bit0: Enable &quot;Load Shock Dampening&quot;&#013;&#010;Bit1: clutch switch switches off load shock absorption&#013;&#010;Bit2: DKG switches off load shock absorption via B_gangwechsel_gs&#013;&#010;Bit3: AT switches off load shock absorption via B_gangwechsel_gs&#013;&#010;Bit4: Switching off the speed threshold (LSD) Load impact also active with B_vnull&#013;&#010;Bit5: Switch off gear threshold (LSD) Load shock damping also active when gear = 0&#013;&#010;Bit6: Switch off LSD with connection speed control and possibly re-init afterwards&#013;&#010;Bit7: LDM can block the load impact damping via B_ldm_nofil </description>
+    <CATEGORYMEM index="0" category="74" />
+    <XDFAXIS id="x" uniqueid="0x0">
+      <EMBEDDEDDATA mmedelementsizebits="8" mmedmajorstridebits="-32" mmedminorstridebits="0" />
+      <indexcount>1</indexcount>
+      <datatype>0</datatype>
+      <unittype>0</unittype>
+      <DALINK index="0" />
+      <LABEL index="0" value="0.00" />
+      <MATH equation="X">
+        <VAR id="X" />
+      </MATH>
+    </XDFAXIS>
+    <XDFAXIS id="y" uniqueid="0x0">
+      <EMBEDDEDDATA mmedelementsizebits="8" mmedmajorstridebits="-32" mmedminorstridebits="0" />
+      <indexcount>1</indexcount>
+      <datatype>0</datatype>
+      <unittype>0</unittype>
+      <DALINK index="0" />
+      <LABEL index="0" value="0.00" />
+      <MATH equation="X">
+        <VAR id="X" />
+      </MATH>
+    </XDFAXIS>
+    <XDFAXIS id="z">
+      <EMBEDDEDDATA mmedaddress="0x7582E" mmedelementsizebits="8" mmedrowcount="1" mmedmajorstridebits="0" mmedminorstridebits="0" />
+      <decimalpl>2</decimalpl>
+      <min>0.000000</min>
+      <max>255.000000</max>
+      <outputtype>3</outputtype>
+      <MATH equation="X">
+        <VAR id="X" />
+      </MATH>
+    </XDFAXIS>
+  </XDFTABLE>
+  <XDFTABLE uniqueid="0x6090" flags="0x0">
+    <title>Configuration of effect of sports switch on torque gradient range</title>
+    <description>CW_S_SPORT&#013;&#010;&#013;&#010;LSB first:&#013;&#010;Bit0: Correction factors for the sports switch for load shock absorption area 1 are taken into account&#013;&#010;Bit1: Correction factors for the sports switch for load shock absorption area 2 are taken into account&#013;&#010;Bit2: Correction factors for the sports switch for load shock absorption area 3 are taken into account&#013;&#010;Bit3: Correction factors for the sports switch for dashpot area 1 are taken into account&#013;&#010;Bit4: Correction factors for the sports switch for dashpot area 2 are taken into account&#013;&#010;Bit5: Correction factors for the sports switch for dashpot area 3 are taken into account</description>
+    <XDFAXIS id="x" uniqueid="0x0">
+      <EMBEDDEDDATA mmedelementsizebits="8" mmedmajorstridebits="-32" mmedminorstridebits="0" />
+      <indexcount>1</indexcount>
+      <datatype>0</datatype>
+      <unittype>0</unittype>
+      <DALINK index="0" />
+      <LABEL index="0" value="0.00" />
+      <MATH equation="X">
+        <VAR id="X" />
+      </MATH>
+    </XDFAXIS>
+    <XDFAXIS id="y" uniqueid="0x0">
+      <EMBEDDEDDATA mmedelementsizebits="8" mmedmajorstridebits="-32" mmedminorstridebits="0" />
+      <indexcount>1</indexcount>
+      <datatype>0</datatype>
+      <unittype>0</unittype>
+      <DALINK index="0" />
+      <LABEL index="0" value="0.00" />
+      <MATH equation="X">
+        <VAR id="X" />
+      </MATH>
+    </XDFAXIS>
+    <XDFAXIS id="z">
+      <EMBEDDEDDATA mmedaddress="0x7582F" mmedelementsizebits="8" mmedrowcount="1" mmedmajorstridebits="0" mmedminorstridebits="0" />
+      <decimalpl>2</decimalpl>
+      <min>0.000000</min>
+      <max>255.000000</max>
+      <outputtype>3</outputtype>
+      <MATH equation="X">
+        <VAR id="X" />
+      </MATH>
+    </XDFAXIS>
+  </XDFTABLE>
+  <XDFTABLE uniqueid="0x6A42" flags="0x0">
+    <title>Configuration of anti-jerk enable with LL, Dashpot and Load Shock Damping</title>
+    <description>CW_AR&#013;&#010;&#013;&#010;LSB first:&#013;&#010;Bit0: Condition Dashpot switches readiness AR on&#013;&#010;Bit1: Condition LSD switches readiness AR on&#013;&#010;Bit2: Condition LL (Idle condition) does not switch off the AR intervention when AR is ready&#013;&#010;</description>
+    <CATEGORYMEM index="0" category="74" />
+    <XDFAXIS id="x" uniqueid="0x0">
+      <EMBEDDEDDATA mmedelementsizebits="8" mmedmajorstridebits="-32" mmedminorstridebits="0" />
+      <indexcount>1</indexcount>
+      <datatype>0</datatype>
+      <unittype>0</unittype>
+      <DALINK index="0" />
+      <LABEL index="0" value="0.00" />
+      <MATH equation="X">
+        <VAR id="X" />
+      </MATH>
+    </XDFAXIS>
+    <XDFAXIS id="y" uniqueid="0x0">
+      <EMBEDDEDDATA mmedelementsizebits="8" mmedmajorstridebits="-32" mmedminorstridebits="0" />
+      <indexcount>1</indexcount>
+      <datatype>0</datatype>
+      <unittype>0</unittype>
+      <DALINK index="0" />
+      <LABEL index="0" value="0.00" />
+      <MATH equation="X">
+        <VAR id="X" />
+      </MATH>
+    </XDFAXIS>
+    <XDFAXIS id="z">
+      <EMBEDDEDDATA mmedaddress="0x75BD8" mmedelementsizebits="8" mmedrowcount="1" mmedmajorstridebits="0" mmedminorstridebits="0" />
+      <decimalpl>2</decimalpl>
+      <min>0.000000</min>
+      <max>255.000000</max>
+      <outputtype>3</outputtype>
+      <MATH equation="X">
         <VAR id="X" />
       </MATH>
     </XDFAXIS>
