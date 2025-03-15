@@ -1,4 +1,4 @@
-<!-- Written 05/27/2024 09:12:48 -->
+<!-- Written 08/07/2024 20:41:34 -->
 <XDFFORMAT version="1.70">
   <XDFHEADER>
     <flags>0x1</flags>
@@ -10,7 +10,7 @@
     <REGION type="0xFFFFFFFF" startaddress="0x0" size="0x200000" regioncolor="0x0" regionflags="0x0" name="Binary File" desc="This region describes the bin file edited by this XDF" />
     <CATEGORY index="0x3D" name="Trailing Throttle and Fuel Cut (Burble)" />
     <CATEGORY index="0x3E" name="Trailing Throttle and Fuel Cut Breakpoints" />
-    <CATEGORY index="0x49" name="Load Management" />
+    <CATEGORY index="0x49" name="Torque Management" />
     <CATEGORY index="0x4A" name="Cruise Control" />
     <CATEGORY index="0x4B" name="Idle Breakpoints" />
     <CATEGORY index="0x4C" name="Idle" />
@@ -115,43 +115,6 @@
       <max>255.000000</max>
       <outputtype>1</outputtype>
       <MATH equation="(X*0.75)-48">
-        <VAR id="X" />
-      </MATH>
-    </XDFAXIS>
-  </XDFTABLE>
-  <XDFTABLE uniqueid="0x73B7" flags="0x30">
-    <title>Sensing delay time after first active crankshaft signal edge</title>
-    <description>C_T_CRK_DLY</description>
-    <XDFAXIS id="x" uniqueid="0x0">
-      <EMBEDDEDDATA mmedelementsizebits="8" mmedmajorstridebits="-32" mmedminorstridebits="0" />
-      <indexcount>1</indexcount>
-      <datatype>0</datatype>
-      <unittype>0</unittype>
-      <DALINK index="0" />
-      <LABEL index="0" value="0.00" />
-      <MATH equation="X">
-        <VAR id="X" />
-      </MATH>
-    </XDFAXIS>
-    <XDFAXIS id="y" uniqueid="0x0">
-      <EMBEDDEDDATA mmedelementsizebits="8" mmedmajorstridebits="-32" mmedminorstridebits="0" />
-      <indexcount>1</indexcount>
-      <outputtype>4</outputtype>
-      <datatype>0</datatype>
-      <unittype>0</unittype>
-      <DALINK index="0" />
-      <LABEL index="0" value="s" />
-      <MATH equation="X">
-        <VAR id="X" />
-      </MATH>
-    </XDFAXIS>
-    <XDFAXIS id="z">
-      <EMBEDDEDDATA mmedtypeflags="0x02" mmedaddress="0x41FF4" mmedelementsizebits="32" mmedrowcount="1" mmedmajorstridebits="0" mmedminorstridebits="0" />
-      <decimalpl>4</decimalpl>
-      <min>0.000000</min>
-      <max>0.040000</max>
-      <outputtype>1</outputtype>
-      <MATH equation="X*0.000000238">
         <VAR id="X" />
       </MATH>
     </XDFAXIS>
@@ -2545,7 +2508,7 @@
   </XDFTABLE>
   <XDFTABLE uniqueid="0x8A3" flags="0x0">
     <title>Configuration of torque interventions that prevent Dashpot enable</title>
-    <description>CW_CONF_DASHPOT&#013;&#010;&#013;&#010;LSB first:&#013;&#010;Bit0: Dashpot enabled&#013;&#010;Bit1: clutch switch switches off dashpot&#013;&#010;Bit2: DKG switches off via B_gangwechsel_gs dashpot&#013;&#010;Bit3: AT switches off dashpot via B_gangwechsel_gs </description>
+    <description>CW_CONF_DASH&#013;&#010;&#013;&#010;LSB first:&#013;&#010;Bit0: Dashpot enabled&#013;&#010;Bit1: Clutch switch switches off dashpot&#013;&#010;Bit2: DKG switches off via B_gangwechsel_gs dashpot&#013;&#010;Bit3: AT switches off dashpot via B_gangwechsel_gs&#013;&#010;Bit4: Unused&#013;&#010;Bit5: Unused&#013;&#010;Bit6: Unused&#013;&#010;Bit7: Unused</description>
     <CATEGORYMEM index="0" category="74" />
     <XDFAXIS id="x" uniqueid="0x0">
       <EMBEDDEDDATA mmedelementsizebits="8" mmedmajorstridebits="-32" mmedminorstridebits="0" />
@@ -2620,6 +2583,7 @@
   <XDFTABLE uniqueid="0x6090" flags="0x0">
     <title>Configuration of effect of sports switch on torque gradient range</title>
     <description>CW_S_SPORT&#013;&#010;&#013;&#010;LSB first:&#013;&#010;Bit0: Correction factors for the sports switch for load shock absorption area 1 are taken into account&#013;&#010;Bit1: Correction factors for the sports switch for load shock absorption area 2 are taken into account&#013;&#010;Bit2: Correction factors for the sports switch for load shock absorption area 3 are taken into account&#013;&#010;Bit3: Correction factors for the sports switch for dashpot area 1 are taken into account&#013;&#010;Bit4: Correction factors for the sports switch for dashpot area 2 are taken into account&#013;&#010;Bit5: Correction factors for the sports switch for dashpot area 3 are taken into account</description>
+    <CATEGORYMEM index="0" category="74" />
     <XDFAXIS id="x" uniqueid="0x0">
       <EMBEDDEDDATA mmedelementsizebits="8" mmedmajorstridebits="-32" mmedminorstridebits="0" />
       <indexcount>1</indexcount>
